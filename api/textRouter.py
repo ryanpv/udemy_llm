@@ -23,3 +23,12 @@ async def chatinput(message: str):
   )
 
   return completion.choices[0].message.content
+
+@router.post("/api/text/moderations")
+async def moderation(textmoderation: str):
+  response = client.moderations.create(
+    model="omni-moderation-latest",
+    input=textmoderation,
+  )
+
+  return response
